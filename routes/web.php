@@ -14,15 +14,13 @@
 use Modules\PatternStrategy\Factories\FactoryDuck;
 
 Route::get('/', function () {
-    $duck = new \Modules\PatternStrategy\Entities\MallardDuck();
-    $duck->nome = 'MallardDuck';
+    $duck = new \Modules\PatternStrategy\Entities\MallardDuck(['nome' => 'MallardDuck']);
     $duck->save();
 
 
-    $realDuck = new \Modules\PatternStrategy\Entities\RealDuck();
-    $realDuck->nome = 'RealDuck';
+    $realDuck = new \Modules\PatternStrategy\Entities\RealDuck(['nome' => 'RealDuck']);
     $realDuck->save();
-//    return view('welcome');
+    return 'Tudo salvo!';
 });
 
 Route::get('/teste', function () {

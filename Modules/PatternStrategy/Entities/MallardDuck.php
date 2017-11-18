@@ -13,15 +13,17 @@ use Modules\PatternStrategy\Comportamento\FlyWithWings;
 
 class MallardDuck extends Duck
 {
+    protected $fillable = [
+        'nome'
+    ];
 
-    /**
-     * MallardDuck constructor.
-     */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
         $this->flyBehavior = new FlyWithWings();
         $this->duck_type = (new \ReflectionClass($this))->getShortName();
+        parent::__construct($attributes);
     }
+
 
     public function display() : string {
         return "I'm a real Mallard Duck";

@@ -19,11 +19,13 @@ class RealDuck extends Duck
 
     /**
      * RealDuck constructor.
+     * @param array $attributes
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
         $this->flyBehavior = new FlyNoWay();
         $this->duck_type = (new \ReflectionClass($this))->getShortName();
+        parent::__construct($attributes);
     }
 
 
