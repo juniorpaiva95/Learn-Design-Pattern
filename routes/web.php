@@ -31,9 +31,17 @@ Route::get('/teste', function () {
 
     foreach ($ducks as $k => $v) {
         $ducksFormatted[] = $factoryDuck->createDuck($v, '\\Modules\\PatternStrategy\\Entities\\');
-        echo "O pato " . $ducksFormatted[$k]->nome . ' pode voar ? R - ' . $ducksFormatted[$k]->performFly();
+        echo "O pato <b>" . $ducksFormatted[$k]->nome . '</b> pode voar ? R - <b>' . $ducksFormatted[$k]->performFly() . '</b>';
         echo "<br>";
     }
+
+    echo "<br>Mudando dinamicamente para que todos patos possam voar<br><br>";
+
+    foreach ($ducksFormatted as $d){
+        $d->setFlyBehavior(new \Modules\PatternStrategy\Comportamento\FlyWithWings());
+        echo "O pato <b>" . $d->nome . '</b> pode voar ? R - <b>' . $d->performFly() . '</b>';
+        echo "<br>";
+    }
+
     dd($ducksFormatted);
-//   $factoryDuck->createDuck($du)
 });
